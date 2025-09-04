@@ -105,7 +105,7 @@ export const NewsfeedContainerSection: React.FC<NewsfeedContainerSectionProps> =
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 px-1 py-2 w-full border-t border-b border-[#e2e2e8]">
+              <div className="flex items-start gap-2.5 px-1 py-2 w-full border-t border-b border-[#e2e2e8] mb-4">
                 <EmojiReactionPicker
                   isLiked={isLiked}
                   selectedReaction={selectedReaction}
