@@ -111,14 +111,14 @@ export const RSVPPage: React.FC<RSVPPageProps> = ({ onClose, initialState, onSta
       </header>
 
       {/* Content */}
-      <div className="flex-1 bg-white px-6 py-6">
+      <div className="flex-1 bg-white px-6 py-5">
         {/* Event Title */}
-        <h2 className="text-2xl font-semibold text-gray-800 mb-8">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Parent teacher conference
         </h2>
 
         {/* Event Details */}
-        <div className="space-y-4 mb-8">
+        <div className="space-y-3 mb-4">
           <div className="flex items-center gap-3">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-gray-500">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
@@ -160,7 +160,7 @@ export const RSVPPage: React.FC<RSVPPageProps> = ({ onClose, initialState, onSta
         </div>
 
         {/* RSVP Section */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           <h3 className="text-xl font-semibold text-gray-800">
             How many are attending?
           </h3>
@@ -200,7 +200,7 @@ export const RSVPPage: React.FC<RSVPPageProps> = ({ onClose, initialState, onSta
               placeholder="Comment (if any)"
               value={comment}
               onChange={(e) => handleCommentChange(e.target.value)}
-              className="w-full h-24 p-3 border border-gray-200 rounded-lg resize-none text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-mfprimaryp-400 focus:border-transparent"
+              className="w-full h-20 p-3 border border-gray-200 rounded-lg resize-none text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-mfprimaryp-400 focus:border-transparent"
             />
           </div>
 
@@ -223,8 +223,8 @@ export const RSVPPage: React.FC<RSVPPageProps> = ({ onClose, initialState, onSta
               </Button>
             </div>
           ) : (
-            <div className="flex flex-col gap-4">
-              <div className="text-center py-2">
+            <div className="flex flex-col gap-3">
+              <div className="text-center py-1">
                 <span className="text-gray-600">
                   You replied: <span className="font-semibold">{isAttending ? 'Attending' : 'Not attending'}</span>
                   {isAttending && attendeeCount > 0 && (
@@ -236,7 +236,7 @@ export const RSVPPage: React.FC<RSVPPageProps> = ({ onClose, initialState, onSta
               <Button
                 variant="outline"
                 onClick={handleEditReply}
-                className="w-full h-12 rounded-lg border-2 border-mfprimaryp-400 text-mfprimaryp-400 hover:bg-mfprimaryp-50"
+                className="w-full h-11 rounded-lg border-2 border-mfprimaryp-400 text-mfprimaryp-400 hover:bg-mfprimaryp-50"
               >
                 Edit reply
               </Button>
