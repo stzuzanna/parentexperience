@@ -17,9 +17,11 @@ export const DesktopNudge: React.FC<DesktopNudgeProps> = ({ text, side = 'left',
   if (!show) return null;
 
   const isLeft = side === 'left';
+  // Add a consistent 24px gap between the device frame and the copy
+  const GAP_PX = 24;
   const containerStyle: React.CSSProperties = isLeft
-    ? { left: 'calc(50% - 420px)', top: 'calc(50% - 140px)' }
-    : { right: 'calc(50% - 420px)', top: 'calc(50% - 140px)' };
+    ? { left: `calc(50% - 420px - ${GAP_PX}px)`, top: 'calc(50% - 140px)' }
+    : { right: `calc(50% - 420px - ${GAP_PX}px)`, top: 'calc(50% - 140px)' };
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[60]">
