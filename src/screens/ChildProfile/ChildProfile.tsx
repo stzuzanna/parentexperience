@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DeviceFrame } from "../../components/DeviceFrame/DeviceFrame";
+import { DesktopNudge } from "../../components/DesktopNudge";
 import { useDeviceDetection } from "../../hooks/useDeviceDetection";
 import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar";
 import { Button } from "../../components/ui/button";
@@ -157,9 +158,17 @@ export const ChildProfile = (): JSX.Element => {
     </div>
   );
 
+  const tipsEnabled = new URLSearchParams(window.location.search).get('tips') === '1';
   return (
     <DeviceFrame showFrame={shouldShowFrame}>
       {appContent}
+      {tipsEnabled && (
+        <DesktopNudge
+          text="Here parents can see everything you’ve logged for their child"
+          side="left"
+          visible={true}
+        />
+      )}
     </DeviceFrame>
   );
 };
