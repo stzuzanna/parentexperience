@@ -14,7 +14,7 @@ export const DemoHeader: React.FC<DemoHeaderProps> = ({ showFrame, showTips, onT
   if (isMobile || isTouch) return null;
 
   return (
-    <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+    <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between relative z-50">
       <div className="text-left">
         <h1 className="text-lg font-semibold text-gray-800">Famly Parent Experience Demo</h1>
         <p className="text-sm text-gray-600 mt-1">Experience what parents see in the Famly app</p>
