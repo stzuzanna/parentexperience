@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { DemoHeader } from './components/DemoHeader/DemoHeader';
 import { useDeviceDetection } from './hooks/useDeviceDetection';
@@ -15,12 +15,26 @@ import { DesktopNudge } from './components/DesktopNudge';
 
 function App() {
   const { shouldShowFrame } = useDeviceDetection();
+  const [showTips, setShowTips] = useState<boolean>(() => {
+    try {
+      const saved = localStorage.getItem('demo_show_tips');
+      return saved ? saved === '1' : false;
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('demo_show_tips', showTips ? '1' : '0');
+    } catch {}
+  }, [showTips]);
 
   return (
     <Router>
       <div className="w-full h-full">
-        <DemoHeader showFrame={shouldShowFrame} />
-        <GlobalNudge showFrame={shouldShowFrame} />
+        <DemoHeader showFrame={shouldShowFrame} showTips={showTips} onToggleTips={() => setShowTips((v) => !v)} />
+        <GlobalNudge showFrame={shouldShowFrame} showTips={showTips} />
         <Routes>
           <Route path="/" element={<IphoneProMax />} />
           <Route path="/demo/parent" element={<IphoneProMax />} />
@@ -38,10 +52,9 @@ function App() {
   );
 }
 
-function GlobalNudge({ showFrame }: { showFrame: boolean }) {
+function GlobalNudge({ showFrame, showTips }: { showFrame: boolean; showTips: boolean }) {
   const location = useLocation();
-  const tipsEnabled = new URLSearchParams(location.search).get('tips') === '1';
-  if (!showFrame || !tipsEnabled) return null;
+  if (!showFrame || !showTips) return null;
 
   const path = location.pathname;
   let text = '';
